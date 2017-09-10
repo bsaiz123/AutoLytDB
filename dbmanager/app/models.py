@@ -17,6 +17,19 @@ class Domains(models.Model):
     def __repr__(self):
         return self.accession_number
 
+    @property
+    def serialize(self):
+        return {
+            "id":self.id,
+            "accession_number":self.accession_number,
+            "genus" : self.genus,
+            "domain_model" : self.domain_model,
+            "domain_description":self.domain_description,
+            "independent_eval":self.independent_eval,
+            "first":self.first,
+            "last":self.last
+        }
+
 class Sequences(models.Model):
     id = models.IntegerField(primary_key=True)
     accession_number = models.CharField(max_length=100)
@@ -26,3 +39,13 @@ class Sequences(models.Model):
 
     def __repr__(self):
         return self.accession_number
+
+    @property
+    def serialize(self):
+        return {
+            "id":self.id,
+            "accession_number":self.accession_number,
+            "genus" : self.genus,
+            "protein_desc" : self.protein_desc,
+            "sequence":self.sequence,
+        }

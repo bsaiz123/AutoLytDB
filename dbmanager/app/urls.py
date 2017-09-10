@@ -5,4 +5,6 @@ from .views import *
 urlpatterns = [
     url(r'^$', home, name='home'),
     url(r'^import/$', import_seq, name='import_seq'),
+    url(r'^domains/$', domains, name='domains'),
+    url(r'^sequences/$', sequences, name='sequences'),
 ]
