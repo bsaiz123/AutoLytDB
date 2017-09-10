@@ -16,6 +16,6 @@ def import_seq(request):
             return redirect('/')
         else:
             print(form.errors)
-            return render(request, 'import.html', {'form': form})
+            return render(request, 'import.html', {'seq_form': form})
     else:
-        return render(request,'import.html',{'form':SequenceInputForm(request.POST,request.FILES)})
+        return render(request,'import.html',{'seq_form':SequenceInputForm(request.POST or None)})

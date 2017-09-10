@@ -9,9 +9,9 @@ class Domains(models.Model):
     genus = models.CharField(max_length=100)
     domain_model = models.CharField(max_length=100)
     domain_description = models.CharField(max_length=2000)
-    independent_eval = models.FloatField()
-    first = models.IntegerField()
-    last = models.IntegerField()
+    independent_eval = models.FloatField(default=0)
+    first = models.IntegerField(default=0)
+    last = models.IntegerField(default=0)
 
 
     def __repr__(self):
