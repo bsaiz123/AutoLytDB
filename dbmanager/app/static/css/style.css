@@ -1,0 +1,7 @@
+tfoot th input{
+    max-width:90px;
+}
+.modal-body textarea{
+    width:100%;
+    min-height:300px;
+}

@@ -1,11 +1,13 @@
 $(document).ready(function(){
-    $('#domains-table').DataTable({
+    var domTable = $('#domains-table').DataTable({
                 processing: true,
                 pageLength: 25,
                 responsive: true,
                 serverSide: true,
                 sAjaxDataProp:"",
                 responsive: true,
+                sDom:"lrtip",
+//                bFilter: false,
                 ajax: {
                     url: '/domains',
                     type: 'GET',
@@ -23,6 +25,21 @@ $(document).ready(function(){
                 ]
 
     });
+    $('#domains-table tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" class="input-sm" placeholder="Search " />' );
+    } );
+    domTable.columns().every( function () {
+        var that = this;
+
+        $( 'input', this.footer() ).on( 'keyup change', function () {
+            if ( that.search() !== this.value ) {
+                that
+                    .search( this.value )
+                    .draw();
+            }
+        } );
+    } );
     var seqTable = $('#seq-table').DataTable({
                 processing: true,
                 pageLength: 25,
@@ -30,6 +47,8 @@ $(document).ready(function(){
                 serverSide: true,
                 sAjaxDataProp:"",
                 responsive: true,
+                sDom:"lrtip",
+//                bFilter: false,
                 ajax: {
                     url: '/sequences',
                     type: 'GET',
@@ -43,7 +62,7 @@ $(document).ready(function(){
                     { "data": "sequence" ,render :function(data,type,row){
                            if(type == 'display'){
                             var content = '';
-                            content = content +     ' 	<a class="btn btn-default view-btn" href="#" >							   ';
+                            content = content +     ' 	<a class="btn btn-default view-btn" href="#" data-toggle="modal" data-target="#exampleModalLong" data-seq='+data+' >';
                             content = content +     ' 		<i class="fa fa-ellipsis-h" title="View"></i>						   ';
                             return content;
                            }
@@ -55,17 +74,21 @@ $(document).ready(function(){
     });
     $('#seq-table tfoot th').each( function () {
         var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        $(this).html( '<input type="text" placeholder="Search " />' );
     } );
     seqTable.columns().every( function () {
         var that = this;
 
         $( 'input', this.footer() ).on( 'keyup change', function () {
             if ( that.search() !== this.value ) {
-                that
-                    .search( this.value )
+                that.search( this.value )
                     .draw();
             }
         } );
     } );
+      $(document).on('click','.view-btn',function(e){
+            $('#seq').text($(this).data('seq'));
+           return true;
+      });
+
 });

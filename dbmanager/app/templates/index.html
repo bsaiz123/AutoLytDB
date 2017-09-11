@@ -7,7 +7,24 @@
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
 <script type="text/javascript" src="{% static 'js/index.js' %}"></script>
-
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" >
+        <textarea id="seq"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
     <div class="col-md-12">
           <div class="row">
               <h5>Sequence Data</h5>
@@ -21,6 +38,15 @@
                         <th>Sequence</th>
                     </tr>
                   </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Accession Number</th>
+                            <th>Genus</th>
+                            <th>Protein Desc</th>
+                            <th>Sequence</th>
+                        </tr>
+                    </tfoot>
               </table>
           </div>
             <div class="row">
@@ -41,6 +67,19 @@
                     <th>Last</th>
                   </tr>
                   </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Accession Number</th>
+                            <th>Genus</th>
+                            <th>Domain Model</th>
+                            <th>Domain Description</th>
+                            <th>Independent Eval</th>
+                            <th>First</th>
+                            <th>Last</th>
+                        </tr>
+                    </tfoot>
+
               </table>
           </div>
 

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+{% load bootstrap4 %}
+<html{% if LANGUAGE_CODE %} lang="{{ LANGUAGE_CODE }}"{% endif %}>
+
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge" /><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block bootstrap4_title %}django-bootstrap4 template title{% endblock %}</title>
+    {% bootstrap_css %}
+    {% if 'javascript_in_head'|bootstrap_setting %}{% bootstrap_javascript jquery=True %}{% endif %}
+    {% block bootstrap4_extra_head %}{% endblock %}
+</head>
+
+<body>
+{% block bootstrap4_content %}django-bootstrap4 template content{% endblock %}
+{% if not 'javascript_in_head'|bootstrap_setting %}{% bootstrap_javascript jquery=True %}{% endif %}
+{% block bootstrap4_extra_script %}{% endblock %}
+</body>
+
+</html>
