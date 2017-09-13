@@ -83,9 +83,9 @@ def domains(request):
                 elif x == 5:
                     filters = filters & Q(independent_eval=float(value)) if filters else Q(independent_eval=float(value))
                 elif x == 6:
-                    filters = filters & Q(first=int(value)) if filters else Q(first=int(value))
+                    filters = filters & Q(first__icontains=value) if filters else Q(first__icontains=value)
                 elif x == 7:
-                    filters = filters & Q(last=int(value)) if filters else Q(last=int(value))
+                    filters = filters & Q(last__icontains=value) if filters else Q(last__icontains=value)
     except:
         traceback.print_exc()
     # print(filters)
