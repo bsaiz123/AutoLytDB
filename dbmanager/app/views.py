@@ -52,8 +52,15 @@ def sequences(request):
 
     seq_data = [x.serialize for x in page]
     data = {'data':seq_data,'recordsTotal':Sequences.objects.all().count()
-        ,'recordsFiltered':len(seq_data)}
+        ,'recordsFiltered':seq_objs.count()}
     return JsonResponse(data)
+
+def seq_details(request,accession_num):
+    seq = Sequences.objects.filter(accession_number=accession_num).first()
+    if seq:
+        domains_objs = Domains.objects.filter(accession_number=accession_num).all()
+        domains = [x.serialize for x in domains_objs]
+    return render_to_response('details.html',{'sequence':seq,'domains':domains})
 
 def domains(request):
     length = int(request.GET.get('length','25'))

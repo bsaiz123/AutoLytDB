@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% load staticfiles %}
+{% block content %}
+<!--<link rel="stylesheet" type="text/css" href="{% static 'css/datatables.min.css' %}"/>-->
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.4.2/css/buttons.dataTables.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/select/1.2.3/css/select.dataTables.css"/>
+
+
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/buttons/1.4.2/js/dataTables.buttons.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/select/1.2.3/js/dataTables.select.js"></script>
+<script type="text/javascript" src="{% static 'js/index.js' %}"></script>
+<div class="row">
+     <h4>Detailed Description Page</h4>
+</div>
+<div class="row">
+
+    <div class="col-md-6">
+        <div class="card" >
+          <!--<div class="card-block">-->
+            <!--<h4 class="card-title">Card title</h4>-->
+            <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>-->
+          <!--</div>-->
+          <ul class="list-group list-group-flush">
+              <li class="list-group-item"><h5>Accession Number : </h5>{{sequence.accession_number}}</li>
+              <li class="list-group-item"><h5>Genus : </h5>{{sequence.genus}}</li>
+              <li class="list-group-item"><h5>Protein Description : </h5>{{sequence.protein_desc}}</li>
+              <li class="list-group-item"><h5>Sequence :</h5> {{sequence.sequence}}</li>
+          </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+
+{% endblock %}

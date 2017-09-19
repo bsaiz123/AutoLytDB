@@ -47,7 +47,22 @@ $(document).ready(function(){
                 serverSide: true,
                 sAjaxDataProp:"",
                 responsive: true,
-                sDom:"lrtip",
+                select: {
+                    style: 'single'
+                },
+                sDom: 'Brtip',
+                buttons: [
+                    {
+                        text: 'Sequence Details',
+                        action: function ( e, dt, node, config ) {
+                            if(dt.rows('.selected').data().length > 0){
+                                var accession_number = dt.rows('.selected').data()[0].accession_number;
+                                window.location.href = '/details/'+accession_number;
+                            }
+
+                        }
+                    }
+                ],
 //                bFilter: false,
                 ajax: {
                     url: '/sequences',
