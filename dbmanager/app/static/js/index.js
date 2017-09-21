@@ -49,7 +49,7 @@ $(document).ready(function(){
                 select: {
                     style: 'single'
                 },
-                sDom: 'Brtip',
+                sDom: "B<'row'><'row'<'col-md-6'l>r>t<'row'<'col-md-4'i>>p",
                 buttons: [
                     {
                         text: 'Sequence Details',
