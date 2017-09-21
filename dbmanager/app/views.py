@@ -26,17 +26,15 @@ def sequences(request):
         for x in range(0,8):
             key = 'columns[%s][search][value]'%x
             value = request.GET.get(key)
-            # print('Search value %s for column %s'%(value,x))
+            print('Search value %s for column %s'%(value,x))
             if value and len(value) > 0:
                 if x == 0:
-                    filters = filters & Q(id=int(value)) if filters else Q(id=int(value))
-                elif x == 1:
                     filters = filters & Q(accession_number__icontains=value) if filters else Q(accession_number__icontains=value)
-                elif x == 2:
+                elif x == 1:
                     filters = filters & Q(genus__icontains=value) if filters else Q(genus__icontains=value)
-                elif x == 3:
+                elif x == 2:
                     filters = filters & Q(protein_desc__icontains=value) if filters else Q(protein_desc__icontains=value)
-                elif x == 4:
+                elif x == 3:
                     filters = filters & Q(sequence__icontains=value) if filters else Q(sequence__icontains=value)
     except:
         traceback.print_exc()

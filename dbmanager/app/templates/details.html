@@ -32,7 +32,29 @@
         </div>
     </div>
     <div class="col-md-6">
-
+<h5>Domains Data</h5>
+              <table id="domains-table" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                  <thead>
+                    <tr>
+                    <th>Model</th>
+                    <th>Description</th>
+                    <th>Eval</th>
+                    <th>First</th>
+                    <th>Last</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  {% for dom in domains %}
+                    <tr>
+                        <td>{{dom.domain_model}}</td>
+                        <td>{{dom.domain_description}}</td>
+                        <td>{{dom.independent_eval}}</td>
+                        <td>{{dom.first}}</td>
+                        <td>{{dom.last}}</td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+              </table>
     </div>
 </div>
 

@@ -1,52 +1,51 @@
 $(document).ready(function(){
     var domTable = $('#domains-table').DataTable({
-                processing: true,
+//                processing: true,
                 pageLength: 25,
                 responsive: true,
-                serverSide: true,
-                sAjaxDataProp:"",
-                responsive: true,
+//                serverSide: true,
+//                sAjaxDataProp:"",
+//                responsive: true,
                 sDom:"lrtip",
 //                bFilter: false,
-                ajax: {
-                    url: '/domains',
-                    type: 'GET',
-                    dataSrc:"data",
-                },
-                columns: [
-                    { "data": "id" },
-                    { "data": "accession_number" },
-                    { "data": "genus" },
-                    { "data": "domain_model" },
-                    { "data": "domain_description" },
-                    { "data": "independent_eval" },
-                    { "data": "first" },
-                    { "data": "last" }
-                ]
+//                ajax: {
+//                    url: '/domains',
+//                    type: 'GET',
+//                    dataSrc:"data",
+//                },
+//                columns: [
+//                    { "data": "id" },
+//                    { "data": "accession_number" },
+//                    { "data": "genus" },
+//                    { "data": "domain_model" },
+//                    { "data": "domain_description" },
+//                    { "data": "independent_eval" },
+//                    { "data": "first" },
+//                    { "data": "last" }
+//                ]
 
     });
-    $('#domains-table tfoot th').each( function () {
-        var title = $(this).text();
-        $(this).html( '<input type="text" class="input-sm" placeholder="Search " />' );
-    } );
-    domTable.columns().every( function () {
-        var that = this;
-
-        $( 'input', this.footer() ).on( 'keyup change', function () {
-            if ( that.search() !== this.value ) {
-                that
-                    .search( this.value )
-                    .draw();
-            }
-        } );
-    } );
+//    $('#domains-table tfoot th').each( function () {
+//        var title = $(this).text();
+//        $(this).html( '<input type="text" class="input-sm" placeholder="Search " />' );
+//    } );
+//    domTable.columns().every( function () {
+//        var that = this;
+//
+//        $( 'input', this.footer() ).on( 'keyup change', function () {
+//            if ( that.search() !== this.value ) {
+//                that
+//                    .search( this.value )
+//                    .draw();
+//            }
+//        } );
+//    } );
     var seqTable = $('#seq-table').DataTable({
                 processing: true,
                 pageLength: 25,
                 responsive: true,
                 serverSide: true,
                 sAjaxDataProp:"",
-                responsive: true,
                 select: {
                     style: 'single'
                 },
@@ -70,7 +69,7 @@ $(document).ready(function(){
                     dataSrc:"data",
                 },
                 columns: [
-                    { "data": "id" },
+//                    { "data": "id" },
                     { "data": "accession_number" },
                     { "data": "genus" },
                     { "data": "protein_desc" },
@@ -87,14 +86,14 @@ $(document).ready(function(){
                 ]
 
     });
-    $('#seq-table tfoot th').each( function () {
+    $('#seq-table thead th').each( function () {
         var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search " />' );
+        $(this).html( '<input type="text" placeholder="Search '+title+'" /><br/>'+title );
     } );
     seqTable.columns().every( function () {
         var that = this;
 
-        $( 'input', this.footer() ).on( 'keyup change', function () {
+        $( 'input', this.header() ).on( 'keyup change', function () {
             if ( that.search() !== this.value ) {
                 that.search( this.value )
                     .draw();
